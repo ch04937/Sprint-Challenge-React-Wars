@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const GridCard ={
+    display: 'flex',
     justifyContent: 'center',
     padding: '5px',
 
@@ -14,3 +15,6 @@ export const Card ={
 
 
 }
+export const Name = styled.p`
+    color: red;
+`
