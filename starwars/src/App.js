@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 
+import StarWars from './components/StarWars'
+
 import './App.css';
 
 const App = () => {
@@ -13,19 +15,30 @@ const App = () => {
   const [people, setPeople] = useState(null);
   useEffect(() => {
     axios.get(
-      'https://swapi.co/api/people'
+      'https://swapi.co/api/people/?format=json'
     )
     .then(res => {
-      setData(res.people)
+      setPeople(res.people)
     });
   }, []);
-
-
   return (
     <div className="App">
-      <h1 className="Header">React Wars Handbook</h1>
+      <h1 className="Header">React Wars Databook</h1>
       {people
-      ? <StarWars /> 
+      ? <StarWars name={people.name}
+                  height={people.height}
+                  mass={people.mass}
+                  hair_color={people.hair_color}
+                  skin_color={people.skin_color} 
+                  birth_year={people.birth_year} 
+                  gender={people.gender}  
+                  homeworld={people.homeworld} 
+                  films={people.films} 
+                  species={people.species} 
+                  vehicles={people.vehicles} 
+                  starships={people.starships}/>
+
+
     : <div>Loading</div>}
     </div>
   );
